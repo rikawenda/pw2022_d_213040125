@@ -1,4 +1,11 @@
 <?php 
+session_start();
+
+if( !isset($_SESSION["login"]) ) {
+    header("Location: login.php");
+    exit;
+}
+
 require 'functions.php';
 // cek apakah tombil submit sudah ditekan atau belum
 if( isset($_POST["tambah"]) ) {
@@ -9,14 +16,14 @@ if( isset($_POST["tambah"]) ) {
         echo "
         <script>
             alert('Data berhasil ditambahkan ke dalam daftar produk!');
-            document.location.href = 'admin.php';
+            document.location.href = 'index.php';
         </script>
         ";
     } else {
         echo "
         <script>
             alert('Data gagal ditambahkan, silahkan coba lagi!');
-            document.location.href = 'admin.php';
+            document.location.href = 'index.php';
         </script>
     ";
     }
@@ -38,15 +45,15 @@ if( isset($_POST["tambah"]) ) {
 
     <title>Tambah Data Produk</title>
   </head>
-  <body>
+  <body style="background-color: rgb(250, 249, 236);">
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand text-light ms-5">Tambah Data Produk</a>
     <div class="collapse navbar-collapse justify-content-end me-4">
       <div class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-light me-3" href="admin.php">Daftar Produk</a>
-        </li>   
+          <a class="nav-link text-light me-3" href="index.php">Daftar Produk</a>
+        </li>
         <a class="nav-link active btn btn-warning" aria-current="page" href="#">Log-Out</a>
       </div>
     </div>

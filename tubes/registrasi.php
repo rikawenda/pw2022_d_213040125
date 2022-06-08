@@ -6,8 +6,10 @@ if( isset($_POST["register"]) ) {
     if(register($_POST) > 0 ) {
         echo "<script>
                 alert('Registrasi berhasil!');
+                document.location.href = 'login.php';
               </script>";
-    } else {
+    } 
+    else {
         echo mysqli_error($conn);
     }
 }
@@ -36,24 +38,26 @@ if( isset($_POST["register"]) ) {
         </div>
         <div class="card-text m-3 p-3">
             <form action="" method="post" autocomplete="off">
+                <!-- <input type="hidden" name> -->
                   <div class="mb-3">
                       <label for="nama" class="form-label">Nama</label>
-                      <input type="text" class="form-control border border-warning" id="nama" name="nama" required>
+                      <input type="text" class="form-control border border-warning" id="nama" name="nama" placeholder="Masukkan nama" required>
                   </div>
                   <div class="mb-3">
                       <label for="username" class="form-label">Username</label>
-                      <input type="username" class="form-control border border-warning" id="username" name="username" required>
+                      <input type="username" class="form-control border border-warning" id="username" name="username" placeholder="Masukkan username" required>
                   </div>
                   <div class="mb-3">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control border border-warning" id="password" name="password" required>
+                      <input type="password" class="form-control border border-warning" id="password" name="password" placeholder="Masukkan password" required>
                   </div>
                   <div class="mb-3">
                       <label for="password2" class="form-label">Re-Password</label>
-                      <input type="password" class="form-control border border-warning" id="password2" name="password2" required>
+                      <input type="password" class="form-control border border-warning" id="password2" name="password2" placeholder="Konfirmasi password" required>
                   </div>
-
-                  <button type="submit" class="btn btn-warning " name="register">Register</button>
+                      <button type="submit" class="btn btn-warning " name="register">Register</button>
+                      <br>
+                      <a href="login.php">Login akun!</a>
             </form>
         </div>
     </div>

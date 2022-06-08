@@ -16,19 +16,19 @@ function query($query) {
 function tambah($data) {
     global $conn;
 
-    $gambar = upload();
-    if( !$gambar ) {
-        return false;
-    }
-
     $nama = htmlspecialchars($data["nama"]);
     $kode = htmlspecialchars($data["kode"]);
     $spesifikasi = htmlspecialchars($data["spesifikasi"]);
     $harga = htmlspecialchars($data["harga"]);
 
+    $gambar = upload();
+    if( !$gambar ) {
+        return false;
+    }
+
         $query = "INSERT INTO produk
         VALUES
-        ('', '$gambar', '$nama', '$kode', '$spesifikasi', '$harga')
+        ('', '$nama', '$kode', '$spesifikasi', '$harga', '$gambar')
         ";
     mysqli_query($conn, $query);
 
@@ -120,10 +120,11 @@ function ubah($data) {
 
 function register($data) {
     global $conn;
-
+    $nama = mysqli_real_escape_string($conn, $data["nama"]);
     $username = strtolower(stripslashes($data["username"]));
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+    $level = mysqli_real_escape_string($conn, $data["level"]);
 
     // Cek apakah username sudah terdaftar atau belum
     $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
@@ -135,7 +136,7 @@ function register($data) {
         return false;
     }
 
-    // Cek informasi password
+    // Cek konfirmasi password
     if( $password !== $password2 ) {
         echo "<script>
                 alert('Konfirmasi password tidak sesuai, silahkan coba lagi!');
@@ -146,11 +147,43 @@ function register($data) {
     // Enskripsi password
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Menambahkan admin baru ke database
-    mysqli_query($conn, "INSERT INTO user VALUES('', '$nama', '$username', '$password')");
+    // Menambahkan user baru ke database
+    mysqli_query($conn, "INSERT INTO user VALUES('', '$nama', '$username', '$password', '$level')");
 
     return mysqli_affected_rows($conn);
 }
+
+// if(isset($_POST['login'])){
+//     $username = $_POST['username'];
+//     $password = $_POST['password'];
+
+//     $cekuser = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' and password='$password'");
+//     $hitung = mysqli_num_rows($cekuser);
+
+//     if($hitung>0){
+//         // jika data ditemukan
+//         $ambildatalevel = mysqli_fetch_array($cekuser);
+//         $role = $ambildatalevel['level'];
+
+//         if($level == 'admin'){
+//             // kalau dia admin
+//             $_SESSION['log'] = 'Logged';
+//             $_SESSION['level'] = 'Admin';
+//             header('Location: admin');
+//         } else {
+//             // kalau bukan admin
+//             $_SESSION['log'] = 'Logged';
+//             $_SESSION['level'] = 'User';
+//             header('Location: user');
+//         }
+
+//     } else {
+//         // kalau tidak ditemukan
+
+//         echo 'Data tidak ditemukan';
+//     }
+// };
+
 
 
 

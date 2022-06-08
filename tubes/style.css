@@ -1,0 +1,6 @@
+.bg {
+  background: url("img/asdf.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 25%;
+  padding-bottom: 25%;
+}
