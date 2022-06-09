@@ -35,14 +35,6 @@ if(isset ($_POST["cari"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Seputar Teknologi</title>
-    <style>
-      @media print {
-        #logout, #tambah, #form-cari, #aksi {
-          display: none;
-        }
-
-      }
-    </style>
 <link rel="stylesheet" href="style.css"/>
 </head>
   <body style="background-color: rgb(250, 249, 236);">
@@ -53,7 +45,7 @@ if(isset ($_POST["cari"])) {
           <a class="nav-link text-white me-auto" href="#dataProduk">Data Produk</a>
         </li>
         <div class="navbar-nav">
-            <a class=" nav-link active btn btn-warning me-3" aria-current="page" href="logout.php" id=logout>Log-Out</a>
+            <a class=" nav-link btn btn-warning ms-3" aria-current="page" href="logout.php" id=logout>Log-Out</a>
         </div>
         </div>
     </nav>
@@ -75,10 +67,10 @@ if(isset ($_POST["cari"])) {
 
         <form action="" method="post" class="d-flex ms-auto mb-3" id="form-cari">
             <input class="form-control me-2" type="text" name="keyword" placeholder="Cari produk" aria-label="Cari" size="30" autofocus autocomplete="off" id="keyword">
-            <button class="btn btn-outline-warning" type="submit" name="cari" id="tombol-cari">Cari</button>
+            <button class="btn btn-warning" type="submit" name="cari" id="tombol-cari">Cari</button>
         </form>
 
-    <table class="table table-bordered border-warning align-middle">
+    <table class="table table-hover table-bordered border-warning align-middle">
   <thead>
     <tr>
       <th scope="col">No.</th>

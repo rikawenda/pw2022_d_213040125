@@ -36,6 +36,7 @@ $produk = query("SELECT * FROM produk");
 
     <title>Seputar Teknologi</title>
   </head>
+  <link rel="stylesheet" href="style.css"/>
   <body style="background-color: rgb(250, 249, 236);">
     <nav class="navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
@@ -54,21 +55,20 @@ $produk = query("SELECT * FROM produk");
     </nav>
 
     <!-- dashboard -->
-    <section id="dashboard">
-    <div class="container-fluid">
-    <video width="1600" height="942" style="width: 100%: height:100vh;" autoplay muted loop>
-        <source src="assets/vidbg.mp4" type="video/mp4">
-    </video>
-    <div class="video-info position-absolute top-50 start-50 translate-middle text-light">
-        <h1 class="display-1">Welcome to I'mTech!</h1>
-        <h2 class="display-6 mt-4">Start here!</h2>
+    <div class="container-fluid bg">
+      <div class="container text-center">
+    <div class="text-light">
+        <h1 class="display-1 mt-1">Welcome to I'mTech!</h1>
+        <h2 class="display-5 mt-4">Start here!</h2>
+      </div>
     </div>
     </div>
-    </section>
 
     <section id="dataProduk">
         <!-- <a href="tambah.php" class="btn btn-warning m-3">Tambah Data Produk</a> -->
-    <table class="table table-bordered border-warning align-middle">
+        <div class="container">
+      <h3 class="mt-5">Daftar Produk</h3>
+    <table class="table table-hover table-bordered border-warning align-middle mt-3">
   <thead>
     <tr>
       <th scope="col">No.</th>
@@ -100,6 +100,7 @@ $produk = query("SELECT * FROM produk");
   <?php  endforeach; ?>
   </tbody>
     </table>
+    </div>
     </section>
 
 
